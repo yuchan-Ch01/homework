@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.myapp.mapper.WebtoonMapper">
+  <!-- 조회한 컬럼과 DTO를 매칭시키기 위한 설정으로 resultMap을 선언한다. -->
+  <resultMap type="org.myapp.model.WebtoonDTO" id="webtoonResultMap">
+  	<id property="webtoonNo" column="WEBTOON_NO"/>
+  	<id property="webtoonName" column="WEBTOON_NAME"/>
+  	<id property="serialCode" column="SERIAL_CODE"/>
+  	<id property="writer" column="WRITER"/>
+  	<id property="illustrator" column="ILLUSTRATOR"/>
+  	<id property="genreCode" column="GENRE_CODE"/>
+  </resultMap>
+  
+  <select id="searchAllWebtoon" resultMap="webtoonResultMap">
+    SELECT
+    	   WEBTOON_NO
+         , WEBTOON_NAME
+         , SERIAL_CODE
+         , WRITER
+         , ILLUSTRATOR
+         , GENRE_CODE
+      FROM TB_WEBTOON
+     ORDER BY WEBTOON_NO     
+  </select>
+  
+  <select id="searchWebtoonByCategory" parameterType="SearchCriteria" resultMap="webtoonResultMap">
+   	SELECT
+    	   WEBTOON_NO
+         , WEBTOON_NAME
+         , SERIAL_CODE
+         , WRITER
+         , ILLUSTRATOR
+         , GENRE_CODE
+      FROM TB_WEBTOON	
+      <if test="condition == 'genre'">
+      JOIN TB_GENRE USING (GENRE_CODE)
+      WHERE GENRE_NAME = #{ value }
+      </if>
+      <if test="condition == 'date'">
+      JOIN TB_SERIALIZATION USING (SERIAL_CODE)
+      WHERE SERIAL_DATE = #{ value }
+   	  </if>
+   	  ORDER BY WEBTOON_NO
+  </select>
+  
+  <insert id="insertNewWebtoon" parameterType="org.myapp.model.WebtoonDTO">
+  	INSERT
+  		INTO TB_WEBTOON
+  	  (
+  	     WEBTOON_NO
+  	   , WEBTOON_NAME
+  	   , SERIAL_CODE
+  	   , WRITER
+  	   , ILLUSTRATOR
+  	   , GENRE_CODE   
+  	  )
+  		VALUES
+  	  (
+  	  	 SEQ_WEBTOON_NO.NEXTVAL
+  	   , #{ webtoonName }
+  	   , #{ serialCode }
+  	   , #{ writer }
+  	   , #{ illustrator }
+  	   , #{ genreCode }	 
+  	  ) 
+  </insert>
+  
+  <update id="modifyWebtoon" parameterType="org.myapp.model.WebtoonDTO">
+  	UPDATE
+  	       TB_WEBTOON
+  	   SET WEBTOON_NAME = #{ webtoonName }
+         , SERIAL_CODE = #{ serialCode }
+         , WRITER = #{ writer }
+         , ILLUSTRATOR = #{ illustrator } 
+         , GENRE_CODE = #{ genreCode }
+     WHERE WEBTOON_NO = #{ webtoonNo }         
+  </update>
+  
+  <delete id="deleteWebtoon" parameterType="string">
+  	DELETE
+  	  FROM TB_WEBTOON
+  	 WHERE WEBTOON_NAME = #{ webtoonName }  
+  </delete>
+</mapper>
