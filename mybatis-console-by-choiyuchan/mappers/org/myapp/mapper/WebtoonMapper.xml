@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
 <mapper namespace="org.myapp.mapper.WebtoonMapper">
-  <!-- 조회한 컬럼과 DTO를 매칭시키기 위한 설정으로 resultMap을 선언한다. -->
   <resultMap type="org.myapp.model.WebtoonDTO" id="webtoonResultMap">
   	<id property="webtoonNo" column="WEBTOON_NO"/>
   	<id property="webtoonName" column="WEBTOON_NAME"/>

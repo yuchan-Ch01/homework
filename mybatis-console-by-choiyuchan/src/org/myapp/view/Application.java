@@ -19,7 +19,7 @@ public class Application {
 		do {		
 			System.out.println("==== 웹툰 관리 시스템 ====");
 			System.out.println("1. 웹툰 전체 조회");
-			System.out.println("2. 웹툰 조회");
+			System.out.println("2. 웹툰 상세 조회");
 			System.out.println("3. 신규 웹툰 추가");
 			System.out.println("4. 웹툰 정보 수정");
 			System.out.println("5. 웹툰 삭제");

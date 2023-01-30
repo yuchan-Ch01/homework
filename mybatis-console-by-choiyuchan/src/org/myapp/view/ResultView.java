@@ -8,7 +8,7 @@ public class ResultView {
 
 	public void printWtList(List<WebtoonDTO> wtList) {
 		for(WebtoonDTO webtoon : wtList) {
-			System.out.println(webtoon);
+			System.out.println(webtoon.getWebtoonName());
 		}
 		
 	}
@@ -17,7 +17,7 @@ public class ResultView {
 		String message = "";
 		
 		switch(result) {
-		case "searchList" : message = "웹툰 검색에 실패 하였습니다."; break;
+		case "searchList" : message = "웹툰 조회에 실패 하였습니다."; break;
 		case "insertFailed" : message = "신규 웹툰 추가에 실패하셨습니다."; break;
 		case "updateFailed" : message = "웹툰 정보 수정에 실패하셨습니다."; break;
 		case "deleteFailed" : message = "웹툰 정보 삭제에 실패하셨습니다."; break;
