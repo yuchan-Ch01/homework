@@ -25,13 +25,13 @@ public class WebtoonService {
 		return wtList;	
 	}
 
-	public List<WebtoonDTO> serchWebtoonByCategory(SearchCriteria criteria) {
+	public List<WebtoonDTO> serchWebtoonByCriteria(SearchCriteria criteria) {
 		
 		SqlSession sqlSession = getSqlSession();
 		
 		webtoonMapper = sqlSession.getMapper(WebtoonMapper.class); 
 		
-		List<WebtoonDTO> wtList = webtoonMapper.searchWebtoonByCategory(criteria);
+		List<WebtoonDTO> wtList = webtoonMapper.searchWebtoonByCriteria(criteria);
 		
 		sqlSession.close();
 		

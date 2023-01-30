@@ -25,7 +25,7 @@
      ORDER BY WEBTOON_NO     
   </select>
   
-  <select id="searchWebtoonByCategory" parameterType="SearchCriteria" resultMap="webtoonResultMap">
+  <select id="searchWebtoonByCriteria" parameterType="SearchCriteria" resultMap="webtoonResultMap">
    	SELECT
     	   WEBTOON_NO
          , WEBTOON_NAME

@@ -29,9 +29,9 @@ public class WebtoonController {
 		}
 	}
 
-	public void searchWebtoonByCategory(SearchCriteria criteria) {
+	public void searchWebtoonByCriteria(SearchCriteria criteria) {
 	
-		List<WebtoonDTO> wtList = wtService.serchWebtoonByCategory(criteria);
+		List<WebtoonDTO> wtList = wtService.serchWebtoonByCriteria(criteria);
 		
 		if(wtList != null && !wtList.isEmpty()) {
 			resultView.printWtList(wtList);

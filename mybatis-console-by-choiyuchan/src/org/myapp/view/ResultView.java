@@ -8,7 +8,7 @@ public class ResultView {
 
 	public void printWtList(List<WebtoonDTO> wtList) {
 		for(WebtoonDTO webtoon : wtList) {
-			System.out.println(webtoon.getWebtoonName());
+			System.out.println(webtoon);
 		}
 		
 	}

@@ -28,7 +28,7 @@ public class Application {
 			
 			switch(no) {
 			case 1 : wtController.searchAllWebtoon(); break;
-			case 2 : wtController.searchWebtoonByCategory(inputSearchCriteria()); break;
+			case 2 : wtController.searchWebtoonByCriteria(inputSearchCriteria()); break;
 			case 3 : wtController.insertNewWebtoon(inputWebtoon()); break;
 			case 4 : wtController.modifyWebtoon(inputInfo()); break;
 			case 5 : wtController.deleteWebtoon(inputName());break;

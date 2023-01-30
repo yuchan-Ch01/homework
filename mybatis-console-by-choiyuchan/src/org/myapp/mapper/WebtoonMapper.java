@@ -10,7 +10,7 @@ public interface WebtoonMapper {
 
 	List<WebtoonDTO> searchAllWebtoon();
 
-	List<WebtoonDTO> searchWebtoonByCategory(SearchCriteria criteria);
+	List<WebtoonDTO> searchWebtoonByCriteria(SearchCriteria criteria);
 
 	int insertNewWebtoon(WebtoonDTO webtoon);
 
